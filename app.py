@@ -54,18 +54,14 @@ if __name__ == '__main__':
     dictionary = ""
     with open("lsi.dict", 'rb') as f:
             dictionary = pickle.load(f)
-    ranker_model = joblib.load("model.pkl")
+            
+    ranker_model = ""
+    with open("model3.pkl", 'rb') as f:
+            ranker_model = pickle.load(f)
 
     BSBI_instance = BSBIIndex(data_dir='collections',
                                 postings_encoding=VBEPostings,
                                 output_dir='index')
 
     BSBI_instance.load()
-
-    BSBI_instance = BSBIIndex(data_dir='collections',
-                            postings_encoding=VBEPostings,
-                            output_dir='index')
-
-    BSBI_instance.load()
-
     app.run(debug=True)
